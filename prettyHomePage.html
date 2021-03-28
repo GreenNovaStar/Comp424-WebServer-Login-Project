@@ -18,6 +18,7 @@ input[type=text], input[type=password] {
   box-sizing: border-box;
 }
 
+
 /* Set a style for all buttons */
 button {
   background-color: #4CAF50;
@@ -188,7 +189,7 @@ span.psw {
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
 
       <a style="text-decoration:none;" href="forgotPassword.html">
-        <button type="button" class="forgotPassBtn">Forgot password?</button>
+        <button type="button" class="forgotPassBtn" onclick="document.getElementById('myform').reset();">Forgot password?</button>
       </a>
 
       <a style="text-decoration:none;" href="register.html">
