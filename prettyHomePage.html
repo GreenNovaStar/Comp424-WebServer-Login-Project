@@ -33,6 +33,17 @@ button:hover {
   opacity: 0.8;
 }
 
+.createAccBtn {
+  width: auto;
+  padding: 10px 18px;
+}
+
+.forgotPassBtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
 /* Extra styles for the cancel button */
 .cancelbtn {
   width: auto;
@@ -173,12 +184,16 @@ span.psw {
         <input type="checkbox" checked="checked" name="remember"> Remember me
       </label>
     </div>
-
     <div class="container" style="background-color:#f1f1f1">
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw"><a href="forgotPassword.html">Forgot password?</a></span>
 
-      <span class="createAcc">New User? <a href="register.html">Create Account</a></span>
+      <a style="text-decoration:none;" href="forgotPassword.html">
+        <button type="button" class="forgotPassBtn">Forgot password?</button>
+      </a>
+
+      <a style="text-decoration:none;" href="register.html">
+        <button type="button" class="createAccBtn" style="float: right;">Create Account</button>
+      </a>
     </div>
   </form>
 </div>
