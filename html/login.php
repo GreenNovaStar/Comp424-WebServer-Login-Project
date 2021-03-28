@@ -21,7 +21,7 @@ input[type=text], input[type=password] {
 
 /* Set a style for all buttons */
 button {
-  background-color: #4CAF50;
+  background-color: #4E7500;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -188,11 +188,11 @@ span.psw {
     <div class="container" style="background-color:#f1f1f1">
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
 
-      <a style="text-decoration:none;" href="forgotPassword.html">
+      <a style="text-decoration:none;" href="forgot.php">
         <button type="button" class="forgotPassBtn" onclick="document.getElementById('myform').reset();">Forgot password?</button>
       </a>
 
-      <a style="text-decoration:none;" href="register.html">
+      <a style="text-decoration:none;" href="register.php">
         <button type="button" class="createAccBtn" style="float: right;">Create Account</button>
       </a>
     </div>
