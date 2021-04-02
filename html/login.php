@@ -35,7 +35,7 @@ $_SESSION['lname'] = $l[0];
 $_SESSION['email'] = $e[0];
 $_SESSION['login'] = $ll[0];
 $_SESSION['dob'] = $d[0];
-header("Location: success.php");
+header("Location: home.php");
 }
 elseif(empty($row1[0]))
 {
