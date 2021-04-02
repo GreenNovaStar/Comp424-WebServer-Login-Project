@@ -1,7 +1,7 @@
 <?php
 session_start();
 $_SESSION['status']="Active";
-$data = parse_ini_file("../config.ini");
+$data = parse_ini_file("config.ini");
 $host=$data[host];
 $user=$data[username];
 $password=$data[password];
