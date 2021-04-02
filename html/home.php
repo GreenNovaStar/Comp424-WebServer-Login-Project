@@ -120,8 +120,10 @@ hr {
       <h2>Hello $FirstName $LastName,</h2>
       <we><strong>Welcome</strong> &nbsp<?php echo $fname; echo " " ; echo $lname;?></we>
       <p><we> Last logged in at : <?php echo $login; ?></we>
-      <p> <a href="logout.php">Log Out</a>
-      <button type="button" class="logoutBtn">Logout</button>
+      </p> 
+      <a style="text-decoration:none;" href="logout.php">
+          <button type="button" class="logoutbtn">Logout</button>
+      </a>
     </div>
   </body>
 </html>
