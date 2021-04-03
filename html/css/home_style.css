@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<style>
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
 
@@ -25,7 +22,7 @@ button:hover {
 }
 
 /* Extra styles for the cancel button */
-.homepageBtn {
+.downloadBtn {
   padding: 14px 20px;
   width: auto;
 }
@@ -95,23 +92,3 @@ hr {
      width: 100%;
   }
 }
-</style>
-  <head>
-    <meta charset="utf-8">
-    <title>Login Successful</title>
-  </head>
-
-  <body>
-    <div class="container">
-      <!-- need to implement loginConfirmation.html file -->
-      <h1>Account Creation Successful</h1>
-      <p>You Have Been Successfully Registered.</p>
-      <hr>
-      <a style="text-decoration:none;" href="HomePage.html">
-        <!-- <button type="button" class="forgotPassBtn" onclick="document.getElementById('myform').reset();">Forgot password?</button> -->
-        <button type="button" class="homepageBtn">Go back to login page</button>
-      </a>
-
-    </div>
-  </body>
-</html>

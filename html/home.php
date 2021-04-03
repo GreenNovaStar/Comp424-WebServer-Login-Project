@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+<?php
+session_start();
+$fname = $_SESSION['fname'];
+$lname = $_SESSION['lname'];
+$email = $_SESSION['email'];
+$address = $_SESSION['address'];
+$dob = $_SESSION['dob'];
+$login = $_SESSION['login'];
+?>
+  
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
 
 /* Full-width input fields */
-input[type=email] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
-}
 
 /* Add a background color when the inputs get focus */
-input[type=email]:focus {
-  background-color: #ddd;
-  outline: none;
-}
 
 /* Set a style for all buttons */
 button {
@@ -37,16 +35,13 @@ button:hover {
 }
 
 /* Extra styles for the cancel button */
-.forgotPassBtn {
+.downloadBtn {
   padding: 14px 20px;
-  background-color: #f44336;
+  width: auto;
 }
 
 /* Float cancel and signup buttons and add an equal width */
-.forgotPassBtn {
-  width: auto;
-  padding: 10px 18px;
-}
+
 
 /* Add padding to container elements */
 .container {
@@ -106,26 +101,29 @@ hr {
 
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
-  .forgotPassBtn {
+  .downloadBtn {
      width: 100%;
   }
 }
 </style>
   <head>
     <meta charset="utf-8">
-    <title>Forgot Password</title>
-    <!-- <h1>Forgot Password</h1> -->
+    <title>Login Successful</title>
   </head>
+
   <body>
-    <div class="container">
-      <form action="/action_page.php">
-        <h1>Forgot Password</h1>
-        <p>Please enter your email to retrieve your password.</p>
-        <hr>
-        <label for="email"><b>Email</b></label>
-        <input type="email" placeholder="Enter Email" name="email" required>
-      </form>
-      <button type="submit" class="forgotPassBtn">Forgot Password</button>
+    <div class="clearfix">
+      <!-- need to implement loginConfirmation.html file -->
+      <h1>Login Successful</h1>
+      <!-- TODO: -->
+      <!-- $[variable name] need to change those to variable names to bring back the data -->
+      <h2>Hello $FirstName $LastName,</h2>
+      <we><strong>Welcome</strong> &nbsp<?php echo $fname; echo " " ; echo $lname;?></we>
+      <p><we> Last logged in at : <?php echo $login; ?></we>
+      </p> 
+      <a style="text-decoration:none;" href="logout.php">
+          <button type="button" class="logoutbtn">Logout</button>
+      </a>
     </div>
   </body>
 </html>

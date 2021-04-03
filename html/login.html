@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/login_style.css">
+</head>
+<body>
+
+<h2>Comp 424 Login Project</h2>
+
+<div class="container">
+  <div class="horizontal-center">
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+  </div>
+</div>
+
+<div id="id01" class="modal">
+
+  <form class="modal-content animate" action="/login.php" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBc6w1uSMX4KRe3ymhUfTt7epM_UWjPMii-w&amp;usqp=CAU" alt="Avatar" class="avatar" style="width:225px;height:225px;">
+
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <button type="submit">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+
+      <a style="text-decoration:none;" href="forgot.html">
+        <button type="button" class="forgotPassBtn" onclick="document.getElementById('myform').reset();">Forgot password?</button>
+      </a>
+
+      <a style="text-decoration:none;" href="register.html">
+        <button type="button" class="createAccBtn" style="float: right;">Create Account</button>
+      </a>
+    </div>
+  </form>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>
