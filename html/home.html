@@ -109,7 +109,15 @@ hr {
       <!-- $[variable name] need to change those to variable names to bring back the data -->
       <h2>Hello $FirstName $LastName,</h2>
       <p>You have logged in $TimesLoggedIn times and you last logged in at $LastLoggedInDate</p>
-      <button type="button" class="downloadBtn">Download Confidential Data</button>
+      <!-- <button type="button" class="downloadBtn">Download Confidential Data</button> -->
+
+      <!-- for some reason txt files open a new window/tab -->
+      <a download href="home.html">
+        Download
+      </a>
+
+      <!-- <a href="confidential_data.txt" download="totally_not_confidential_data.txt">Download</a> -->
+
     </div>
   </body>
 </html>
