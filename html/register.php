@@ -17,7 +17,7 @@
   $lastName = $_POST['lname'];
   $username = $_POST['usrname'];
   $email = $_POST['email'];
-  $password = $_POST['psw'];
+  $psw1 = $_POST['psw'];
   $sec1 = $_POST['$securityQuestion1'];
   $ans1 = $_POST['$question1'];
   $sec2 = $_POST['$securityQuestion2'];
@@ -48,7 +48,7 @@
       '$lastName',
       '$username',
       '$email',
-      '$password',
+      '$psw1',
       '$birthday',
       '$sec1', '$ans1',
       '$sec2', '$ans2',
