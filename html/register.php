@@ -25,28 +25,82 @@
   $ans3 = $_POST['$question3'];
   $birthday = $_POST['birthday'];
 
+  $querych=mysqli_query($connection,"SELECT email from comp_users where email='$email'");
+  $flag=mysqli_num_rows($querych);
+  if($flag>=1) {
+    echo "User Exists";
+    header("Location: login.html");
+  } else{
+    // $sql="INSERT INTO comp_users (fname,lname,email,password) values ('$fname','$lname','$email','$pwd1')";
+    $sql = "INSERT INTO comp_users(
+      fname,
+      lname,
+      uname,
+      email,
+      password,
+      dob,
+      sec1, ans1,
+      sec2, ans2,
+      sec3, ans3
+    )VALUES(
+      $firstName,
+      $lastName,
+      $username,
+      $email,
+      $password,
+      $birthday,
+      $sec1, $ans1,
+      $sec2, $ans2,
+      $sec3, $ans3,
+    )";
+    $result=mysqli_query($connection,$sql);
+    if(empty($result)) {
+      $create="CREATE TABLE comp_users (
+        fname varchar(255),
+        lname varchar(255),
+        uname varchar(50) UNIQUE,
+        email varchar(255) Primary Key,
+        password varchar(50),
+        sec1 tinyint NOT NULL DEFAULT 0,
+        ans1 varchar(255),
+        sec2 tinyint NOT NULL DEFAULT 0,
+        ans2 varchar(255),
+        sec3 tinyint NOT NULL DEFAULT 0,
+        ans3 varchar(255),
+        dob date,
+        login timestamp,
+        numlogin int NOT NULL DEFAULT 0,
+      )";
+        mysqli_query($connection,$create);
+        mysqli_query($connection,$sql);
+    }
+      header("Location: successful.html");
+  }
 
-  $update=mysqli_query($connection,"INSERT INTO comp_users(
-    fname,
-    lname,
-    uname,
-    email,
-    password,
-    dob,
-    sec1, ans1,
-    sec2, ans2,
-    sec3, ans3
-  )VALUES(
-    $firstName,
-    $lastName,
-    $username,
-    $email,
-    $password,
-    $birthday,
-    $sec1, $ans1,
-    $sec2, $ans2,
-    $sec3, $ans3,
-  )");
+
+
+
+  // $update=mysqli_query($connection,"INSERT INTO comp_users(
+  //   fname,
+  //   lname,
+  //   uname,
+  //   email,
+  //   password,
+  //   dob,
+  //   sec1, ans1,
+  //   sec2, ans2,
+  //   sec3, ans3
+  // )VALUES(
+  //   $firstName,
+  //   $lastName,
+  //   $username,
+  //   $email,
+  //   $password,
+  //   $birthday,
+  //   $sec1, $ans1,
+  //   $sec2, $ans2,
+  //   $sec3, $ans3,
+  // )");
 
   mysqli_close($connection);
 ?>
