@@ -1,15 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<?php
-session_start();
-$fname = $_SESSION['fname'];
-$lname = $_SESSION['lname'];
-$email = $_SESSION['email'];
-$address = $_SESSION['address'];
-$dob = $_SESSION['dob'];
-$login = $_SESSION['login'];
-?>
-  
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
@@ -115,15 +105,32 @@ hr {
     <div class="clearfix">
       <!-- need to implement loginConfirmation.html file -->
       <h1>Login Successful</h1>
-      <!-- TODO: -->
-      <!-- $[variable name] need to change those to variable names to bring back the data -->
-      <h2>Hello $FirstName $LastName,</h2>
-      <we><strong>Welcome</strong> &nbsp<?php echo $fname; echo " " ; echo $lname;?></we>
-      <p><we> Last logged in at : <?php echo $login; ?></we>
-      </p> 
-      <a style="text-decoration:none;" href="logout.php">
-          <button type="button" class="logoutbtn">Logout</button>
+      <?php
+        session_start();
+        $fname = "John";
+        $lname = "Doe";
+        $numlogin = 5;
+        $lastlogin =  "1/4/2021";
+
+        $fname = $_SESSION['fname'];
+        $lname = $_SESSION['lname'];
+        $numlogin = $_SESSION['nl'];
+        $lastlogin =  $_SESSION['login'];
+
+        echo "<h2>Hello $fname $lname,</h2>";
+        echo "<p>You have logged in $numlogin times and you last logged in at $lastlogin</p>";
+       ?>
+
+      <!-- <button type="button" class="downloadBtn">Download Confidential Data</button> -->
+      <!-- for some reason txt files open a new window/tab -->
+      <!-- <a download href="home.html"> -->
+      <a download href="confidential_data.txt">
+        Download
       </a>
+
+
+      <!-- <a href="confidential_data.txt" download="totally_not_confidential_data.txt">Download</a> -->
+
     </div>
   </body>
 </html>
