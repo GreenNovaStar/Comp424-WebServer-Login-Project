@@ -13,7 +13,7 @@
   $connection= mysqli_connect($host, $user, $password, $db);
   // $connection= mysqli_connect($host, $user, $db);
 
-  if($connection === false){
+  if($connection -> false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
   }
 
@@ -36,7 +36,6 @@
     echo "User Exists";
     header("Location: login.html");
   } else{
-    echo "$flag";
     // $sql="INSERT INTO comp_users (fname,lname,email,password) values ('$fname','$lname','$email','$pwd1')";
     $sql = "INSERT INTO comp_users(
       fname,
@@ -55,9 +54,12 @@
       '$email',
       '$psw1',
       '$birthday',
-      '$sec1', '$ans1',
-      '$sec2', '$ans2',
-      '$sec3', '$ans3'
+      0,'a',
+      1,'b',
+      2,'c',
+      -- '$sec1', '$ans1',
+      -- '$sec2', '$ans2',
+      -- '$sec3', '$ans3'
     )";
     echo "$sql";
     $result=mysqli_query($connection,$sql);

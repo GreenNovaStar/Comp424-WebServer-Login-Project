@@ -1,9 +1,14 @@
 <?php
-  $data = parse_ini_file("../config.ini");
-  $host=$data[host];
-  $user=$data[username];
-  $password=$data[password];
-  $db=$data[dbname];
+  // $data = parse_ini_file("../config.ini");
+  // $host=$data[host];
+  // $user=$data[username];
+  // $password=$data[password];
+  // $db=$data[dbname];
+  $host="localhost";
+  $user="ubuntu";
+  $password="CompClass!424";
+  $db=comp_class;
+
   $connection= mysqli_connect($host, $user, $password, $db);
 
   if($connection === false){
