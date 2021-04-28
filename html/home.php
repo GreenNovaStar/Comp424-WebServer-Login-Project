@@ -88,11 +88,17 @@ hr {
   clear: both;
   display: table;
 }
-
+.downloadBtn {
+   width: auto;
+}
+.logoutbtn {
+   width: auto;
+   background-color: #f44336;
+}
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
   .downloadBtn {
-     width: 100%;
+     width: auto;
   }
 }
 </style>
@@ -104,7 +110,7 @@ hr {
   <body>
     <div class="clearfix">
       <!-- need to implement loginConfirmation.html file -->
-      <h1>Login Successful</h1>
+      <!-- <h1>Login Successful</h1> -->
       <?php
         session_start();
         $fname = "John";
@@ -117,17 +123,29 @@ hr {
         $numlogin = $_SESSION['nl'];
         $lastlogin =  $_SESSION['login'];
 
+        // echo "<h2>Hello $fname $lname,</h2>";
+        // echo "<p>You have logged in $numlogin times and you last logged in at $lastlogin</p>";
+
+        echo "<h1>Login Successful</h1>";
+        echo "<hr>";
         echo "<h2>Hello $fname $lname,</h2>";
-        echo "<p>You have logged in $numlogin times and you last logged in at $lastlogin</p>";
+        echo "<strong>Welcome to Da Squad!</strong>";
+        echo "<p><we> Last logged in at : $lastlogin</we></p>";
+        echo "<o><we> You have logged in $numlogin times.</we></p>";
+
        ?>
 
       <!-- <button type="button" class="downloadBtn">Download Confidential Data</button> -->
       <!-- for some reason txt files open a new window/tab -->
       <!-- <a download href="home.html"> -->
-      <a download href="confidential_data.txt">
-        Download
-      </a>
-
+      <div>
+        <a style="text-decoration: none;" download href="confidential_data.txt">
+          <button type="button" class="downloadBtn">Download</button>
+        </a>
+        <a style="text-decoration:none;" href="logout.php">
+          <button type="button" class="logoutbtn">Logout</button>
+        </a>
+      </div>
 
       <!-- <a href="confidential_data.txt" download="totally_not_confidential_data.txt">Download</a> -->
 
