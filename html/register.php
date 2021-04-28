@@ -36,6 +36,7 @@
     echo "User Exists";
     header("Location: login.html");
   } else{
+    echo "$flag";
     // $sql="INSERT INTO comp_users (fname,lname,email,password) values ('$fname','$lname','$email','$pwd1')";
     $sql = "INSERT INTO comp_users(
       fname,
@@ -58,8 +59,11 @@
       '$sec2', '$ans2',
       '$sec3', '$ans3'
     )";
+    echo "$sql";
     $result=mysqli_query($connection,$sql);
+    echo "$result";
     if(empty($result)) {
+      echo "in the if(empty) statement";
       $create="CREATE TABLE comp_users (
         fname varchar(255),
         lname varchar(255),
@@ -76,6 +80,7 @@
         login timestamp,
         numlogin int NOT NULL DEFAULT 0,
       )";
+      echo "$create";
         mysqli_query($connection,$create);
         mysqli_query($connection,$sql);
         header("Location: login.html");
