@@ -46,14 +46,14 @@
   $ll = mysqli_fetch_row($login); //last login
   $nl = mysqli_fetch_row($numlogin);
 
-  echo "row1 = $row1 <br>";
-  echo "row2 = $row2 <br>";
-  echo "f = $f <br>";
-  echo "l = $l <br>";
-  echo "e = $e <br>";
-  echo "d = $d <br>";
-  echo "ll = $ll <br>";
-  echo "nl = $nl <br>";
+  // echo "row1 = $row1 <br>";
+  // echo "row2 = $row2 <br>";
+  // echo "f = $f <br>";
+  // echo "l = $l <br>";
+  // echo "e = $e <br>";
+  // echo "d = $d <br>";
+  // echo "ll = $ll <br>";
+  // echo "nl = $nl <br>";
 
   if($psw1==$row2[0] && !empty($row1[0]))
   {
@@ -68,7 +68,7 @@
   elseif(empty($row1[0]))
   {
     //header("Location: register.html");
-    echo "elseif(empty($row1[0]))<br>";
+    // echo "elseif(empty($row1[0]))<br>";
     echo "header(Location: register.html);"
   }
   else
