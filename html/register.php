@@ -74,7 +74,7 @@
         mysqli_query($connection,$create);
         mysqli_query($connection,$sql);
     }
-      header("Location: successful.html");
+      header("Location: confirmation.html");
   }
 
 
