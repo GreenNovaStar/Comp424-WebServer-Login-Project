@@ -20,16 +20,16 @@
 
   //grab information from login form
   $uname = mysqli_real_escape_string($connection, $_POST['usrname']);
-  $password = mysqli_real_escape_string($connection, $_POST['psw']);
+  $psw1 = mysqli_real_escape_string($connection, $_POST['psw']);
 
-  $user =mysqli_real_escape_string($connection,      "SELECT uname     FROM app_user   WHERE usrname='$uname'");
-  $pwd=mysqli_real_escape_string($connection,        "SELECT password  FROM app_user   WHERE usrname='$uname'");
-  $fname =mysqli_real_escape_string($connection,     "SELECT fname     FROM app_user   WHERE usrname='$uname'");
-  $lname =mysqli_real_escape_string($connection,     "SELECT lname     FROM app_user   WHERE usrname='$uname'");
-  $email =mysqli_real_escape_string($connection,     "SELECT email     FROM app_user   WHERE usrname='$uname'");
-  $dob =mysqli_real_escape_string($connection,       "SELECT dob       FROM app_user   WHERE usrname='$uname'");
-  $login =mysqli_real_escape_string($connection,     "SELECT login     FROM app_user   WHERE usrname='$uname'");
-  $numlogin =mysqli_real_escape_string($connection,  "SELECT numlogin  FROM app_user   WHERE usrname='$uname'");
+  $user =mysqli_real_escape_string($connection,      "SELECT uname     FROM comp_users   WHERE usrname='$uname'");
+  $pwd=mysqli_real_escape_string($connection,        "SELECT password  FROM comp_users   WHERE usrname='$uname'");
+  $fname =mysqli_real_escape_string($connection,     "SELECT fname     FROM comp_users   WHERE usrname='$uname'");
+  $lname =mysqli_real_escape_string($connection,     "SELECT lname     FROM comp_users   WHERE usrname='$uname'");
+  $email =mysqli_real_escape_string($connection,     "SELECT email     FROM comp_users   WHERE usrname='$uname'");
+  $dob =mysqli_real_escape_string($connection,       "SELECT dob       FROM comp_users   WHERE usrname='$uname'");
+  $login =mysqli_real_escape_string($connection,     "SELECT login     FROM comp_users   WHERE usrname='$uname'");
+  $numlogin =mysqli_real_escape_string($connection,  "SELECT numlogin  FROM comp_users   WHERE usrname='$uname'");
 
   $update=mysqli_query($connection,     "UPDATE comp_users   SET numlogin = numlogin + 1 WHERE usrname='$uname'");
   $update=mysqli_query($connection,     "UPDATE comp_users   SET login=now() WHERE usrname='$uname'");
@@ -43,7 +43,7 @@
   $ll = mysqli_fetch_row($login); //last login
   $nl = mysqli_fetch_row($numlogin);
 
-  if($password==$row2[0] && !empty($row1[0]))
+  if($psw1==$row2[0] && !empty($row1[0]))
   {
     $_SESSION['fname'] = $f[0];
     $_SESSION['lname'] = $l[0];
