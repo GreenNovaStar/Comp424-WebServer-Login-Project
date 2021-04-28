@@ -6,7 +6,8 @@
   $user=$data[username];
   //$password=$data[password];
   $db=$data[dbname];
-  $connection= mysqli_connect($host, $user, $password, $db);
+  // $connection= mysqli_connect($host, $user, $password, $db);
+  $connection= mysqli_connect($host, $user, $db);
 
   if($connection === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
