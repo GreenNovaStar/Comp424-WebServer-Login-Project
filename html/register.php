@@ -12,17 +12,18 @@
     die("ERROR: Could not connect. " . mysqli_connect_error());
   }
 
-  $username = $_POST['usrname'];
-  $password = $_POST['psw'];
   $firstName = $_POST['fname'];
   $lastName = $_POST['lname'];
-  $birthday = $_POST['birthday'];
+  $username = $_POST['usrname'];
+  $email = $_POST['email'];
+  $password = $_POST['psw'];
   $sec1 = $_POST['$securityQuestion1'];
   $ans1 = $_POST['$question1'];
   $sec2 = $_POST['$securityQuestion2'];
   $ans2 = $_POST['$question2'];
   $sec3 = $_POST['$securityQuestion3'];
   $ans3 = $_POST['$question3'];
+  $birthday = $_POST['birthday'];
 
 
   $update=mysqli_query($connection,"INSERT INTO comp_users(
@@ -32,7 +33,6 @@
     email,
     password,
     dob,
-    numlogin,
     sec1, ans1,
     sec2, ans2,
     sec3, ans3
@@ -43,7 +43,6 @@
     $email,
     $password,
     $birthday,
-    0,
     $sec1, $ans1,
     $sec2, $ans2,
     $sec3, $ans3,
