@@ -22,8 +22,8 @@
   $uname = mysqli_real_escape_string($connection, $_POST['usrname']);
   $psw1 = mysqli_real_escape_string($connection, $_POST['psw']);
 
-  echo "username from loginpage = $uname <br>";
-  echo "password from loginpage = $psw1 <br>";
+  echo "username from loginpage = $_POST['usrname'] <br>";
+  echo "password from loginpage = $_POST['psw'] <br>";
 
   $user =mysqli_real_escape_string($connection,      "SELECT uname     FROM comp_users   WHERE uname='$uname'");
   $pwd=mysqli_real_escape_string($connection,        "SELECT password  FROM comp_users   WHERE uname='$uname'");
