@@ -1,13 +1,17 @@
 <?php
-  // session_start();
-  // $_SESSION['status']="Active";
-  $data = parse_ini_file("../config.ini");
-  $host=$data[host];
-  $user=$data[username];
-  $password=$data[password];
-  $db=$data[dbname];
+  session_start();
+  $_SESSION['status']="Active";
+  // $data = parse_ini_file("../config.ini");
+  // $host=$data[host];
+  $host="localhost";
+  // $user=$data[username];
+  $user="ubuntu";
+  // $password=$data[password];
+  $password="CompClass!424";
+  // $db=$data[dbname];
+  $db=comp_class;
   $connection= mysqli_connect($host, $user, $password, $db);
-  $connection= mysqli_connect($host, $user, $db);
+  // $connection= mysqli_connect($host, $user, $db);
 
   if($connection === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
@@ -74,8 +78,11 @@
       )";
         mysqli_query($connection,$create);
         mysqli_query($connection,$sql);
-    }
+        header("Location: login.html");
+    }else{
+
       header("Location: confirmation.html");
+    }
   }
 
 
