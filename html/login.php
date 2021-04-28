@@ -7,7 +7,7 @@
   $host="localhost";
   $user="ubuntu";
   $password="CompClass!424";
-  $db=comp_class;
+  $db="comp_class";
 
   $connection= mysqli_connect($host, $user, $password, $db);
 
