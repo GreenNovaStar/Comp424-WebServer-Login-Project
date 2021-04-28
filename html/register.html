@@ -228,10 +228,10 @@ hr {
         <input type="date" placeholder="Enter Birthday" name="birthday" required>
 
         <!-- question lists: https://sites.google.com/site/pwordsecuritykate/home/list-of-ideas-security-questions -->
-        <label for="question1"><b>Security Question 1:
+        <label for="securityQuestion1"><b>Security Question 1:
           <!-- <select name="securityQuestion1" id="Security Question 1"> -->
           <select name="securityQuestion1">
-            <option value="" disabled selected>Choose Security Question</option>
+            <option value="-1" disabled selected>Choose Security Question</option>
             <option value="0">What was your childhood nickname?</option>
             <option value="1">What school did you attend for sixth grade?</option>
             <option value="2">What was the last name of your third grade teacher?</option>
@@ -240,9 +240,9 @@ hr {
           </select></b></label>
         <input type="text" placeholder="Security Question 1" name="question1" required>
 
-        <label for="question2"><b>Security Question 2:
-          <select name="securityQuestion2" id="Security Question 2">
-            <option value="" disabled selected>Choose Security Question</option>
+        <label for="securityQuestion2"><b>Security Question 2:
+          <select name="securityQuestion2" id="SecurityQuestion2">
+            <option value="-1" disabled selected>Choose Security Question</option>
             <option value="0">What was your childhood nickname?</option>
             <option value="1">What school did you attend for sixth grade?</option>
             <option value="2">What was the last name of your third grade teacher?</option>
@@ -251,9 +251,9 @@ hr {
           </select></b></label>
         <input type="text" placeholder="Security Question 2" name="question2" required>
 
-        <label for="question3"><b>Security Question 3:
-          <select name="securityQuestion3" id="Security Question 3">
-            <option value="" disabled selected>Choose Security Question</option>
+        <label for="securityQuestion3"><b>Security Question 3:
+          <select name="securityQuestion3" id="SecurityQuestion3">
+            <option value="-1" disabled selected>Choose Security Question</option>
             <option value="0">What was your childhood nickname?</option>
             <option value="1">What school did you attend for sixth grade?</option>
             <option value="2">What was the last name of your third grade teacher?</option>
@@ -290,6 +290,7 @@ hr {
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="../javascript/PassRequirements.js"></script>
+  <script type="text/javascript" src="../pwstrength.js"></script>
   <script>
   $('#password1').PassRequirements({
     popoverPlacement: 'right',
