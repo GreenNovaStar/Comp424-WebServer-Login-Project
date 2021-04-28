@@ -43,15 +43,15 @@
       sec2, ans2,
       sec3, ans3
     )VALUES(
-      $firstName,
-      $lastName,
-      $username,
-      $email,
-      $password,
-      $birthday,
-      $sec1, $ans1,
-      $sec2, $ans2,
-      $sec3, $ans3,
+      '$firstName',
+      '$lastName',
+      '$username',
+      '$email',
+      '$password',
+      '$birthday',
+      '$sec1', '$ans1',
+      '$sec2', '$ans2',
+      '$sec3', '$ans3'
     )";
     $result=mysqli_query($connection,$sql);
     if(empty($result)) {

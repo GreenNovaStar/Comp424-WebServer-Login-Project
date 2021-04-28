@@ -17,14 +17,14 @@
   $uname = mysqli_real_escape_string($connection, $_POST['usrname']);
   $password = mysqli_real_escape_string($connection, $_POST['psw']);
 
-  $user =mysqli_query($connection,      "SELECT uname     FROM app_user   WHERE usrname='$uname'");
-  $pwd=mysqli_query($connection,        "SELECT password  FROM app_user   WHERE usrname='$uname'");
-  $fname =mysqli_query($connection,     "SELECT fname     FROM app_user   WHERE usrname='$uname'");
-  $lname =mysqli_query($connection,     "SELECT lname     FROM app_user   WHERE usrname='$uname'");
-  $email =mysqli_query($connection,     "SELECT email     FROM app_user   WHERE usrname='$uname'");
-  $dob =mysqli_query($connection,       "SELECT dob       FROM app_user   WHERE usrname='$uname'");
-  $login =mysqli_query($connection,     "SELECT login     FROM app_user   WHERE usrname='$uname'");
-  $numlogin =mysqli_query($connection,  "SELECT numlogin  FROM app_user   WHERE usrname='$uname'");
+  $user =mysqli_real_escape_string($connection,      "SELECT uname     FROM app_user   WHERE usrname='$uname'");
+  $pwd=mysqli_real_escape_string($connection,        "SELECT password  FROM app_user   WHERE usrname='$uname'");
+  $fname =mysqli_real_escape_string($connection,     "SELECT fname     FROM app_user   WHERE usrname='$uname'");
+  $lname =mysqli_real_escape_string($connection,     "SELECT lname     FROM app_user   WHERE usrname='$uname'");
+  $email =mysqli_real_escape_string($connection,     "SELECT email     FROM app_user   WHERE usrname='$uname'");
+  $dob =mysqli_real_escape_string($connection,       "SELECT dob       FROM app_user   WHERE usrname='$uname'");
+  $login =mysqli_real_escape_string($connection,     "SELECT login     FROM app_user   WHERE usrname='$uname'");
+  $numlogin =mysqli_real_escape_string($connection,  "SELECT numlogin  FROM app_user   WHERE usrname='$uname'");
 
   $update=mysqli_query($connection,     "UPDATE comp_users   SET numlogin = numlogin + 1 WHERE usrname='$uname'");
   $update=mysqli_query($connection,     "UPDATE comp_users   SET login=now() WHERE usrname='$uname'");
