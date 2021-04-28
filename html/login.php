@@ -1,11 +1,6 @@
 <?php
   session_start();
   $_SESSION['status']="Active";
-  // $data = parse_ini_file("../config.ini");
-  // $host=$data[host];
-  // $user=$data[username];
-  // $password=$data[password];
-  // $db=$data[dbname];
   $host="localhost";
   $user="ubuntu";
   $password="CompClass!424";
@@ -13,19 +8,16 @@
 
   $connection= mysqli_connect($host, $user, $password, $db);
 
-  if($connection -> false){
+  if($connection === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
   }
 
-  // session_start();
-  // $_SESSION['status']="Active";
 
   //grab information from login form
   $uname = mysqli_real_escape_string($connection, $_POST['usrname']);
   $psw1 = mysqli_real_escape_string($connection, $_POST['psw']);
 
-  echo "username from loginpage = $_POST['usrname'] <br>";
-  echo "password from loginpage = $_POST['psw'] <br>";
+
 
   $user =mysqli_query($connection,      "SELECT uname     FROM comp_users   WHERE uname='$uname'");
   $pwd=mysqli_query($connection,        "SELECT password  FROM comp_users   WHERE uname='$uname'");
@@ -33,13 +25,13 @@
   $lname =mysqli_query($connection,     "SELECT lname     FROM comp_users   WHERE uname='$uname'");
   $email =mysqli_query($connection,     "SELECT email     FROM comp_users   WHERE uname='$uname'");
   $dob =mysqli_query($connection,       "SELECT dob       FROM comp_users   WHERE uname='$uname'");
-
-  $update=mysqli_query($connection,     "UPDATE comp_users   SET numlogin = numlogin + 1 WHERE uname='$uname'");
-  $update=mysqli_query($connection,     "UPDATE comp_users   SET login=now() WHERE uname='$uname'");
-
+  $update =mysqli_query($connection,    "UPDATE comp_users   SET login=now() WHERE uname='$uname'");
   $login =mysqli_query($connection,     "SELECT login     FROM comp_users   WHERE uname='$uname'");
+  $update2 =mysqli_query($connection,   "UPDATE comp_users   SET numlogin = numlogin + 1 WHERE uname='$uname'");
   $numlogin =mysqli_query($connection,  "SELECT numlogin  FROM comp_users   WHERE uname='$uname'");
 
+  $checkusr = mysqli_query($connection, "SELECT COUNT(*) FROM comp_users WHERE uname = '$uname' AND password = MD5('$psw1');");
+  $checkusr = mysqli_fetch_row($checkusr);
 
   $row1 = mysqli_fetch_row($user);
   $row2 = mysqli_fetch_row($pwd);
@@ -50,16 +42,7 @@
   $ll = mysqli_fetch_row($login); //last login
   $nl = mysqli_fetch_row($numlogin);
 
-  // echo "row1 = $row1 <br>";
-  // echo "row2 = $row2 <br>";
-  // echo "f = $f <br>";
-  // echo "l = $l <br>";
-  // echo "e = $e <br>";
-  // echo "d = $d <br>";
-  // echo "ll = $ll <br>";
-  // echo "nl = $nl <br>";
-
-  if($psw1==$row2[0] && !empty($row1[0]))
+  if($psw1==$checkusr[0] && !empty($row1[0]))
   {
     $_SESSION['fname'] = $f[0];
     $_SESSION['lname'] = $l[0];
@@ -71,16 +54,13 @@
   }
   elseif(empty($row1[0]))
   {
-    //header("Location: register.html");
-    // echo "elseif(empty($row1[0]))<br>";
-    echo "header(Location: register.html)";
+    header("Location: register.html");
   }
   else
   {
-    //header("Location: error.html");
-    echo "else<br>";
-    echo "header(Location: error.html)";
+    header("Location: error.html");
   }
+
 
   mysqli_close($connection);
 ?>
