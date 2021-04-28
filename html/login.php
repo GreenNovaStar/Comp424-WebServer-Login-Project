@@ -1,49 +1,59 @@
 <?php
-session_start();
-$_SESSION['status']="Active";
-$data = parse_ini_file("../config.ini");
-$host=$data[host];
-$user=$data[username];
-$password=$data[password];
-$db=$data[dbname];
-$connection= mysqli_connect($host, $user, $password, $db);
-if($connection === false){
-die("ERROR: Could not connect. " . mysqli_connect_error());
-}
-$name = mysqli_real_escape_string($connection, $_POST['uname']);
-$password = mysqli_real_escape_string($connection, $_POST['password']);
-$user =mysqli_query($connection,"SELECT email FROM app_user WHERE email='$name'");
-$pwd=mysqli_query($connection,"SELECT password FROM app_user WHERE email='$name'");
-$fname =mysqli_query($connection,"SELECT fname FROM app_user WHERE email='$name'");
-$lname =mysqli_query($connection,"SELECT lname FROM app_user WHERE email='$name'");
-$email =mysqli_query($connection,"SELECT email FROM app_user WHERE email='$name'");
-$dob =mysqli_query($connection,"SELECT dob FROM app_user WHERE email='$name'");
-$login =mysqli_query($connection,"SELECT login FROM app_user WHERE email='$name'");
-$update=mysqli_query($connection,"UPDATE app_user set login=now()");
-$row1 = mysqli_fetch_row($user);
-$row2 = mysqli_fetch_row($pwd);
-$f = mysqli_fetch_row($fname);
-$l = mysqli_fetch_row($lname);
-$e = mysqli_fetch_row($email);
-$d = mysqli_fetch_row($dob);
-$ll = mysqli_fetch_row($login);
+  session_start();
+  $_SESSION['status']="Active";
+  $data = parse_ini_file("../config.ini");
+  $host=$data[host];
+  $user=$data[username];
+  $password=$data[password];
+  $db=$data[dbname];
+  $connection= mysqli_connect($host, $user, $password, $db);
 
-if($password==$row2[0] && !empty($row1[0]))
-{
-$_SESSION['fname'] = $f[0];
-$_SESSION['lname'] = $l[0];
-$_SESSION['email'] = $e[0];
-$_SESSION['login'] = $ll[0];
-$_SESSION['dob'] = $d[0];
-header("Location: home.php");
-}
-elseif(empty($row1[0]))
-{
-header("Location: register.html");
-}
-else
-{
-header("Location: error.html");
-}
-mysqli_close($connection); 
+  if($connection === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
+  }
+  //grab information from login form
+  $uname = mysqli_real_escape_string($connection, $_POST['usrname']);
+  $password = mysqli_real_escape_string($connection, $_POST['psw']);
+
+  $user =mysqli_query($connection,      "SELECT uname     FROM app_user   WHERE usrname='$uname'");
+  $pwd=mysqli_query($connection,        "SELECT password  FROM app_user   WHERE usrname='$uname'");
+  $fname =mysqli_query($connection,     "SELECT fname     FROM app_user   WHERE usrname='$uname'");
+  $lname =mysqli_query($connection,     "SELECT lname     FROM app_user   WHERE usrname='$uname'");
+  $email =mysqli_query($connection,     "SELECT email     FROM app_user   WHERE usrname='$uname'");
+  $dob =mysqli_query($connection,       "SELECT dob       FROM app_user   WHERE usrname='$uname'");
+  $login =mysqli_query($connection,     "SELECT login     FROM app_user   WHERE usrname='$uname'");
+  $numlogin =mysqli_query($connection,  "SELECT numlogin  FROM app_user   WHERE usrname='$uname'");
+
+  $update=mysqli_query($connection,     "UPDATE comp_users   SET numlogin = numlogin + 1 WHERE usrname='$uname'");
+  $update=mysqli_query($connection,     "UPDATE comp_users   SET login=now() WHERE usrname='$uname'");
+
+  $row1 = mysqli_fetch_row($user);
+  $row2 = mysqli_fetch_row($pwd);
+  $f = mysqli_fetch_row($fname);
+  $l = mysqli_fetch_row($lname);
+  $e = mysqli_fetch_row($email);
+  $d = mysqli_fetch_row($dob);
+  $ll = mysqli_fetch_row($login); //last login
+  $nl = mysqli_fetch_row($numlogin);
+
+  if($password==$row2[0] && !empty($row1[0]))
+  {
+    $_SESSION['fname'] = $f[0];
+    $_SESSION['lname'] = $l[0];
+    $_SESSION['email'] = $e[0];
+    $_SESSION['login'] = $ll[0];
+    $_SESSION['dob']   = $d[0];
+    $_SESSION['numlogin'] = $nl[0];
+    header("Location: home.php");
+  }
+  elseif(empty($row1[0]))
+  {
+    header("Location: register.html");
+  }
+  else
+  {
+    header("Location: error.html");
+  }
+
+  mysqli_close($connection);
 ?>
