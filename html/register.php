@@ -1,13 +1,11 @@
 <?php
-  // session_start();
-  // $_SESSION['status']="Active";
   $host="localhost";
   $user="ubuntu";
   $password="CompClass!424";
   $db="comp_class";
+  
   $connection= mysqli_connect($host, $user, $password, $db);
-  //echo "$connection<br>";
-  //echo "0<br>";
+
   if($connection -> false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
   }
@@ -17,12 +15,12 @@
   $username = mysqli_real_escape_string($connection,$_POST['usrname']);
   $email = mysqli_real_escape_string($connection,$_POST['email']);
   $psw1 = mysqli_real_escape_string($connection,$_POST['psw']);
-  //$sec1 = mysqli_real_escape_string($connection,$_POST['$securityQuestion1']);
-  //$ans1 = mysqli_real_escape_string($connection,$_POST['$question1']);
-  //$sec2 = mysqli_real_escape_string($connection,$_POST['$securityQuestion2']);
-  //$ans2 = mysqli_real_escape_string($connection,$_POST['$question2']);
-  //$sec3 = mysqli_real_escape_string($connection,$_POST['$securityQuestion3']);
-  //$ans3 = mysqli_real_escape_string($connection,$_POST['$question3']);
+  $sec1 = mysqli_real_escape_string($connection,$_POST['securityQuestion1']);
+  $ans1 = mysqli_real_escape_string($connection,$_POST['question1']);
+  $sec2 = mysqli_real_escape_string($connection,$_POST['securityQuestion2']);
+  $ans2 = mysqli_real_escape_string($connection,$_POST['question2']);
+  $sec3 = mysqli_real_escape_string($connection,$_POST['securityQuestion3']);
+  $ans3 = mysqli_real_escape_string($connection,$_POST['question3']);
   $birthday = mysqli_real_escape_string($connection,$_POST['birthday']);
 
   $querych=mysqli_query($connection,"SELECT email from comp_users where email='$email'");
@@ -38,6 +36,12 @@
       uname,
       email,
       password,
+      sec1,
+      ans1,
+      sec2,
+      ans2,
+      sec3,
+      ans3,
       dob
     )VALUES(
       '$firstName',
@@ -45,15 +49,17 @@
       '$username',
       '$email',
       '$psw1',
+      '$sec1',
+      '$ans1',
+      '$sec2',
+      '$ans2',
+      '$sec3',
+      '$ans3',
       '$birthday'
     )";
-	echo "$sql<br>";
-	echo "1<br>";
-	//echo "$connection<br>";
-	//echo "2<br>";
+
     $result=mysqli_query($connection,$sql);
-	echo "$result<br>";
-	echo "3<br>";
+	
     if(empty($result)) {
       $create="CREATE TABLE comp_users (
         fname varchar(255),
@@ -62,19 +68,19 @@
         email varchar(255) Primary Key,
         password varchar(50),
         dob date,
+	sec1 tinyint NOT NULL DEFAULT 0,
+	ans1 varchar(255),
+	sec2 tinyint NOT NULL DEFAULT 0,
+	ans2 varchar(255),
+	sec3 tinyint NOT NULL DEFAULT 0,
+	ans3 varchar(255),
         login timestamp,
-        numlogin int NOT NULL DEFAULT 0,
+        numlogin int NOT NULL DEFAULT 0
       )";
-		echo "$create";
-		echo "4<br>";
         $result = mysqli_query($connection,$create);
-		echo "$result";
-		echo "5<br>";
         $result2 = mysqli_query($connection,$sql);
-		echo "$result2";
-		echo "6<br>";
     }
-      //header("Location: confirmation.html");
+      header("Location: confirmation.html");
   }
 
   mysqli_close($connection);
