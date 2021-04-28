@@ -4,7 +4,7 @@
   $data = parse_ini_file("../config.ini");
   $host=$data[host];
   $user=$data[username];
-  $password=$data[password];
+  //$password=$data[password];
   $db=$data[dbname];
   $connection= mysqli_connect($host, $user, $password, $db);
 
