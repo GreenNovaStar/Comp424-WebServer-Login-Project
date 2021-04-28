@@ -1,6 +1,4 @@
 <?php
-  session_start();
-  $_SESSION['status']="Active";
   $data = parse_ini_file("../config.ini");
   $host=$data[host];
   $user=$data[username];
@@ -11,6 +9,10 @@
   if($connection === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
   }
+
+  // session_start();
+  // $_SESSION['status']="Active";
+
   //grab information from login form
   $uname = mysqli_real_escape_string($connection, $_POST['usrname']);
   $password = mysqli_real_escape_string($connection, $_POST['psw']);
