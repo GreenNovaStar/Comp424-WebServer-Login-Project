@@ -83,7 +83,7 @@
       echo "$create";
         mysqli_query($connection,$create);
         mysqli_query($connection,$sql);
-        header("Location: login.html");
+        //header("Location: login.html");
     }else{
 
       header("Location: confirmation.html");
