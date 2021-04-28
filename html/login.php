@@ -1,6 +1,11 @@
 <?php
   session_start();
   $_SESSION['status']="Active";
+  // $data = parse_ini_file("../config.ini");
+  // $host=$data[host];
+  // $user=$data[username];
+  // $password=$data[password];
+  // $db=$data[dbname];
   $host="localhost";
   $user="ubuntu";
   $password="CompClass!424";
@@ -12,9 +17,15 @@
     die("ERROR: Could not connect. " . mysqli_connect_error());
   }
 
+  // session_start();
+  // $_SESSION['status']="Active";
+
   //grab information from login form
   $uname = mysqli_real_escape_string($connection, $_POST['usrname']);
   $psw1 = mysqli_real_escape_string($connection, $_POST['psw']);
+
+  //echo "username from loginpage = $_POST['usrname'] <br>";
+  //echo "password from loginpage = $_POST['psw'] <br>";
 
   $user =mysqli_query($connection,      "SELECT uname     FROM comp_users   WHERE uname='$uname'");
   $pwd=mysqli_query($connection,        "SELECT password  FROM comp_users   WHERE uname='$uname'");
@@ -22,8 +33,8 @@
   $lname =mysqli_query($connection,     "SELECT lname     FROM comp_users   WHERE uname='$uname'");
   $email =mysqli_query($connection,     "SELECT email     FROM comp_users   WHERE uname='$uname'");
   $dob =mysqli_query($connection,       "SELECT dob       FROM comp_users   WHERE uname='$uname'");
-  $login =mysqli_query($connection,     "SELECT login     FROM comp_users   WHERE uname='$uname'");
   $update =mysqli_query($connection,    "UPDATE comp_users   SET login=now() WHERE uname='$uname'");
+  $login =mysqli_query($connection,     "SELECT login     FROM comp_users   WHERE uname='$uname'");
   $update2 =mysqli_query($connection,   "UPDATE comp_users   SET numlogin = numlogin + 1 WHERE uname='$uname'");
   $numlogin =mysqli_query($connection,  "SELECT numlogin  FROM comp_users   WHERE uname='$uname'");
   
