@@ -120,7 +120,7 @@ hr {
 
         $fname = $_SESSION['fname'];
         $lname = $_SESSION['lname'];
-        $numlogin = $_SESSION['nl'];
+        $numlogin = $_SESSION['numlogin'];
         $lastlogin =  $_SESSION['login'];
 
         // echo "<h2>Hello $fname $lname,</h2>";

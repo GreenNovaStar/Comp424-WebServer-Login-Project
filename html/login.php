@@ -34,8 +34,8 @@
   $email =mysqli_query($connection,     "SELECT email     FROM comp_users   WHERE uname='$uname'");
   $dob =mysqli_query($connection,       "SELECT dob       FROM comp_users   WHERE uname='$uname'");
 
-  $update=mysqli_query($connection,     "UPDATE comp_users   SET numlogin = numlogin + 1");
-  $update=mysqli_query($connection,     "UPDATE comp_users   SET login=now()");
+  $update=mysqli_query($connection,     "UPDATE comp_users   SET numlogin = numlogin + 1 WHERE uname='$uname'");
+  $update=mysqli_query($connection,     "UPDATE comp_users   SET login=now() WHERE uname='$uname'");
 
   $login =mysqli_query($connection,     "SELECT login     FROM comp_users   WHERE uname='$uname'");
   $numlogin =mysqli_query($connection,  "SELECT numlogin  FROM comp_users   WHERE uname='$uname'");
@@ -73,7 +73,7 @@
   {
     //header("Location: register.html");
     // echo "elseif(empty($row1[0]))<br>";
-    echo "header(Location: register.html);"
+    echo "header(Location: register.html)";
   }
   else
   {
