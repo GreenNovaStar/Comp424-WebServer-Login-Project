@@ -3,18 +3,48 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>SUCCESS</title>
-		<link rel="stylesheet" href="css/success_style.css">
+		<style type="text/css">
+		body {font-family: Arial, Helvetica, sans-serif;}
+		* {box-sizing: border-box;}
+		
+		button {
+		background-color: #4e7500;
+		color: white;
+		padding: 14px 20px;
+		margin: 8px 0;
+		border: none;
+		cursor: pointer;
+		width: 25%;
+		opacity: 0.9;
+		}
+
+		button:hover {
+		opacity:1;
+		}
+		
+		/* The Modal (background) */
+		.modal {
+		display: none; /* Hidden by default */
+		position: fixed; /* Stay in place */
+		z-index: 1; /* Sit on top */
+		left: 0;
+		top: 0;
+		width: 100%; /* Full width */
+		height: 100%; /* Full height */
+		overflow: auto; /* Enable scroll if needed */
+		background-color: #474e5d;
+		padding-top: 50px;
+		}
+
+		</style>
 	</head>
+	<header>
+		Congratulations!
+	</header>
 	<main>
-		<body>
-      <div class="container">
-      <h1>
-        Congratulations!
-      </h1>
-			<h3>You Have Been Successfully Registered.</h3>
-      <hr>
-			<button onclick="location.href='login.html'">CLICK HERE TO LOGIN</button>
-    </div>
+		<body>		
+			<p>You Have Been Successfully Registered.</p>
+			<p><button onclick="location.href='../login.html'">CLICK HERE TO LOGIN</button>
 		</body>
 	</main>
 </html>

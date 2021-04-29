@@ -1,65 +1,87 @@
 <?php
-session_start();
-$_SESSION['status']="Active";
-$data = parse_ini_file("../config.ini");
-$host=$data[host];
-$user=$data[username];
-$password=$data[password];
-$db=$data[dbname];
-$connection= mysqli_connect($host, $user, $password, $db);
-if($connection === false){
-  die("ERROR: Could not connect. " . mysqli_connect_error());
-}
-//grab information from register page
-$fname = $_SESSION['fname'];
-$lname = $_SESSION['lname'];
-$email = $_SESSION['email'];
-$psw1  = $_SESSION['psw'];
-$psw2  = $_SESSION['psw-repeat'];
-$dob   = $_SESSION['dob'];
+  $host="localhost";
+  $user="ubuntu";
+  $password="CompClass!424";
+  $db="comp_class";
+  
+  $connection= mysqli_connect($host, $user, $password, $db);
 
-$querych=mysqli_query($connection,"SELECT email from comp_class where email='$email'");
-$flag=mysqli_num_rows($querych);
-if($flag>=1) {
-  echo "User Exists";
-  header("Location: login.html");
-} else{
-  $sql="INSERT INTO comp_class (fname,lname,email,password,gender,contact) values ('$fname','$lname','$email','$pwd1')";
-  $result=mysqli_query($connection,$sql);
-  if(empty($result))
-  {
-    $create="CREATE TABLE comp_class (
-      fname varchar(255),
-      lname varchar(255),
-      email varchar(255) Primary Key,
-      password varchar(50),
-      dob date,
-      login timestamp
-    )";
-    mysqli_query($connection,$create);
-    mysqli_query($connection,$sql);
+  if($connection -> false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
   }
-  header("Location: successful.html");
-}
 
-// if($fname === NULL || $lname === NULL || $email === NULL || $psw1 === NULL || $psw2 === NULL || $dob === NULL){
-//   header("Location: register.html");
-// }else{
-//   if($psw1 === $psw2){
-//     // passwords is the same
-//     $dbemail =mysqli_query($connection,"SELECT email FROM app_user WHERE email='$name'");
-//     if($email === $dbemail){
-//       //email is already in database
-//       header("Location: login.html");
-//     }else{
-//       //proceed with account registration
-//       header("Location: success.html");
-//     }
-//   }else{
-//     //error passwords do not match
-//     header("Location: register.html");
-//   }
-// }
+  $firstName = mysqli_real_escape_string($connection,$_POST['fname']);
+  $lastName = mysqli_real_escape_string($connection,$_POST['lname']);
+  $username = mysqli_real_escape_string($connection,$_POST['usrname']);
+  $email = mysqli_real_escape_string($connection,$_POST['email']);
+  $psw1 = mysqli_real_escape_string($connection,$_POST['psw']);
+  $sec1 = mysqli_real_escape_string($connection,$_POST['securityQuestion1']);
+  $ans1 = mysqli_real_escape_string($connection,$_POST['question1']);
+  $sec2 = mysqli_real_escape_string($connection,$_POST['securityQuestion2']);
+  $ans2 = mysqli_real_escape_string($connection,$_POST['question2']);
+  $sec3 = mysqli_real_escape_string($connection,$_POST['securityQuestion3']);
+  $ans3 = mysqli_real_escape_string($connection,$_POST['question3']);
+  $birthday = mysqli_real_escape_string($connection,$_POST['birthday']);
 
-mysqli_close($connection);
+  $querych=mysqli_query($connection,"SELECT email from comp_users where email='$email'");
+  $flag=mysqli_num_rows($querych);
+  if($flag>=1) {
+    echo "User Exists";
+    header("Location: login.html");
+  } else{
+    
+    $sql = "INSERT INTO comp_users(
+      fname,
+      lname,
+      uname,
+      email,
+      password,
+      sec1,
+      ans1,
+      sec2,
+      ans2,
+      sec3,
+      ans3,
+      dob
+    )VALUES(
+      '$firstName',
+      '$lastName',
+      '$username',
+      '$email',
+      '$psw1',
+      '$sec1',
+      '$ans1',
+      '$sec2',
+      '$ans2',
+      '$sec3',
+      '$ans3',
+      '$birthday'
+    )";
+
+    $result=mysqli_query($connection,$sql);
+	
+    if(empty($result)) {
+      $create="CREATE TABLE comp_users (
+        fname varchar(255),
+        lname varchar(255),
+        uname varchar(50) UNIQUE,
+        email varchar(255) Primary Key,
+        password varchar(50),
+        dob date,
+	sec1 tinyint NOT NULL DEFAULT 0,
+	ans1 varchar(255),
+	sec2 tinyint NOT NULL DEFAULT 0,
+	ans2 varchar(255),
+	sec3 tinyint NOT NULL DEFAULT 0,
+	ans3 varchar(255),
+        login timestamp,
+        numlogin int NOT NULL DEFAULT 0
+      )";
+        $result = mysqli_query($connection,$create);
+        $result2 = mysqli_query($connection,$sql);
+    }
+      header("Location: confirmation.html");
+  }
+
+  mysqli_close($connection);
 ?>

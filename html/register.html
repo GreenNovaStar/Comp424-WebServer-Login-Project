@@ -1,59 +1,175 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<link rel="stylesheet" href="css/register_style.css">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=date], input[type=email] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* Add a background color when the inputs get focus */
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color:  #4E7500;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  width: auto;
+  padding: 10px 18px;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #474e5d;
+  padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Style the horizontal ruler */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+.close:hover,
+.close:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+     width: 100%;
+  }
+}
+</style>
   <head>
     <meta charset="utf-8">
     <title>Register Page</title>
     <!-- <h1>Register for a new account</h1> -->
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
-    <script type="text/javascript" src="js/registerValidation.js"></script>
   </head>
-
   <body>
-    <form action="confirmation.html" method="post" name="form">
+    <form action="/success.html" method="post" name="form">
       <div class="container">
-        <h1>Sign Up</h1>
-        <p>Please fill in this form to create an account.</p>
-        <hr>
+      <h1>Sign Up</h1>
+      <p>Please fill in this form to create an account.</p>
+      <hr>
 
-        <label for="fname"><b>First Name</b></label>
-        <input type="text" placeholder="Enter First Name" name="fname" required>
+      <label for="fname"><b>First Name</b></label>
+      <input type="text" placeholder="Enter First Name" name="fname" required>
 
-        <label for="lname"><b>Last Name</b></label>
-        <input type="text" placeholder="Enter Last Name" name="lname" required>
+      <label for="lname"><b>Last Name</b></label>
+      <input type="text" placeholder="Enter Last Name" name="lname" required>
 
-        <label for="email"><b>Email</b></label>
-        <input type="email" placeholder="Enter Email" id="emailInput" name="email" required>
+      <label for="email"><b>Email</b></label>
+      <input type="email" placeholder="Enter Email" name="email" required>
 
-        <label for="psw"><b>Password</b></label>
-        <input type="password" id ="password1" placeholder="Enter Password" name="psw" required>
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
 
-        <label for="psw-repeat"><b>Repeat Password</b></label>
-        <input type="password" id ="password2" placeholder="Repeat Password" name="psw-repeat" required>
+      <label for="psw-repeat"><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
 
-        <label for="birthday"><b>Birthday</b></label>
-        <input type="date" placeholder="Enter Birthday" name="birthday" required>
-        <!-- <label>
-          <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-        </label> -->
-        <p><span id="passwordMessage"></span></p>
-        <p><span id="emailMessage"></span></p>
-        <div class="clearfix">
+      <label for="birthday"><b>Birthday</b></label>
+      <input type="date" placeholder="Enter Birthday" name="birthday" required>
+
+      <label>
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+      </label>
+
+      <div class="clearfix">
+        <a style="text-decoration:none;" href="login.html">
           <button type="button" class="cancelbtn">Cancel</button>
-          <button type="submit" class="signupbtn">Sign Up</button>
-        </div>
-        <!-- <div class="clearfix">
-          <a style="text-decoration:none;" href="login.html">
-            <button type="button" class="cancelbtn">Cancel</button>
-          </a>
-
-
-          <a style="text-decoration:none;" href="login.html">
-            <button type="submit" class="signupbtn" value="Sign Up" id="submit" disabled="disabled"><a href="login.html">Sign in here</a></button>
-
-          </a>
-      </div> -->
+        </a>
+        <button type="submit" class="signupbtn">Sign Up</button>
       </div>
-    </form>
+    </div>
+
+      <!-- <div class ="container">
+        <label>First Name:</label>
+        <input type="text" name= "firstName" class="container" required><br><br>
+      </div>
+
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName"><br><br>
+      <label for="birthDate">Birthday:</label>
+      <input type="text" id="birthDate" name="birthDate"><br><br>
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email"><br><br>
+      <label for="password">Password:</label>
+      <input type="text" id="password" name="password"><br><br>
+      <label for="passwordConfirm">Confirm Password:</label>
+      <input type="text" id="passwordConfirm" name="passwordConfirm"><br><br>
+      <input type="submit" value="submit">
+    </form> -->
+    <!-- <a href="registerConfirmation.html"><button type="button" name="button">Create Account</button> -->
   </body>
 </html>
