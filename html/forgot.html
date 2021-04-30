@@ -157,16 +157,18 @@ hr {
       <label for="password">Forgot Password</label>
       <hr>
       <div class = "forgotpasswrdform">
-        <form action="/forgot.php">
+        <form action="forgotPassword.php">
           <h1>Forgot Password</h1>
-          <h5>Please enter your email to retrieve your password.</h5>
+          <h5>Please enter your email and username to retrieve your password.</h5>
           <hr>
           <label for="email"><b>Email</b></label>
           <input type="email" placeholder="Enter Email" name="email" required>
+          <label for="uname"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="uname" required>
+          <div class="h-captcha" data-sitekey="ebc443a9-6d76-4817-93a6-a8c725a54020"></div>
+          <hr>
+          <button type="submit" class="forgotPassBtn">Send Email</button>
         </form>
-        <div class="h-captcha" data-sitekey="ebc443a9-6d76-4817-93a6-a8c725a54020"></div>
-        <hr>
-        <button type="submit" class="forgotPassBtn">Send Email</button>
         <!-- <br> -->
         <a style="text-decoration:none;" href="login.html">
           <button type="button" class="cancelbtn" >Cancel</button>
@@ -190,13 +192,13 @@ hr {
 
           <label for="question3"><b>Security Question #3</b></label>
           <input type="text" placeholder="Enter Security Question #3 Answer" name="question3" required>
+          <div class="h-captcha" data-sitekey="ebc443a9-6d76-4817-93a6-a8c725a54020"></div>
+          <button type="submit" class="forgotPassBtn">Send Email</button>
+          <!-- <br> -->
+          <a style="text-decoration:none;" href="login.html">
+            <button type="button" class="cancelbtn" >Cancel</button>
         </form>
-        <div class="h-captcha" data-sitekey="ebc443a9-6d76-4817-93a6-a8c725a54020"></div>
         <hr>
-        <button type="submit" class="forgotPassBtn">Send Email</button>
-        <!-- <br> -->
-        <a style="text-decoration:none;" href="login.html">
-          <button type="button" class="cancelbtn" >Cancel</button>
         </a>
       </div>
 
