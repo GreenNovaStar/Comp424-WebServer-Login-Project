@@ -30,7 +30,7 @@
   $update2 =mysqli_query($connection,   "UPDATE comp_users   SET numlogin = numlogin + 1 WHERE uname='$uname'");
   $numlogin =mysqli_query($connection,  "SELECT numlogin  FROM comp_users   WHERE uname='$uname'");
 
-  $checkusr = mysqli_query($connection, "SELECT COUNT(*) FROM comp_users WHERE uname = '$uname' AND password = MD5('$psw1');");
+  $checkusr = mysqli_query($connection, "SELECT COUNT(*) FROM comp_users WHERE uname = '$uname' AND password = MD5('$psw1')");
   $checkusr = mysqli_fetch_row($checkusr);
 
   $row1 = mysqli_fetch_row($user);
@@ -42,7 +42,8 @@
   $ll = mysqli_fetch_row($login); //last login
   $nl = mysqli_fetch_row($numlogin);
 
-  if($psw1==$checkusr[0] && !empty($row1[0]))
+  // if($psw1==$checkusr[0] && !empty($row1[0]))
+  if($checkusr[0] >= 1 && !empty($row1[0]))
   {
     $_SESSION['fname'] = $f[0];
     $_SESSION['lname'] = $l[0];

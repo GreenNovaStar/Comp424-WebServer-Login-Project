@@ -1,4 +1,9 @@
 <?php
+  use PHPMailer\PHPMailer\PHPMailer;
+  use PHPMailer\PHPMailer\Exception;
+
+  require '../../../../home/ubuntu/vendor/autoload.php';
+
   $host="localhost";
   $user="ubuntu";
   $password="CompClass!424";
@@ -80,6 +85,62 @@
         $result = mysqli_query($connection,$create);
         $result2 = mysqli_query($connection,$sql);
     }
+
+	  $sender = 'dasquad424@gmail.com';
+	  $senderName = 'Da Squad';
+
+	  $recipient = $email;
+
+	  // Amazon SES SMTP user name.
+	  $usernameSmtp = 'AKIAZVTSETEUXWMLOWLL';
+
+	  // Amazon SES SMTP password.
+	  $passwordSmtp = 'BN/daElGi8eiqhWoYsVTs6cWAgIoQ9xO9yKtsYM5Kya9';
+
+	  $configurationSet = 'dasquad';
+
+	  $host = 'email-smtp.us-west-1.amazonaws.com';
+	  $port = 587;
+
+	  $subject = 'Email Verification to Join Da Squad';
+
+	  $bodyText =  "Email Verification\r\nThis email was sent from Da Squad website! Click --> Da Squad to verify your email and complete the registration process!";
+
+	  $bodyHtml = '<h1>Email Verification</h1>
+		<p>This email was sent from Da Squad website! Click -->
+		<a href="http://ec2-54-151-88-187.us-west-1.compute.amazonaws.com/success.html">Da Squad</a> to verify your email and complete the registration process!</p>';
+
+	  $mail = new PHPMailer(true);
+
+	  try {
+		// Specify the SMTP settings.
+		$mail->isSMTP();
+		$mail->setFrom($sender, $senderName);
+		$mail->Username   = $usernameSmtp;
+		$mail->Password   = $passwordSmtp;
+		$mail->Host       = $host;
+		$mail->Port       = $port;
+		$mail->SMTPAuth   = true;
+		$mail->SMTPSecure = 'tls';
+		$mail->addCustomHeader('X-SES-CONFIGURATION-SET', $configurationSet);
+
+		// Specify the message recipients.
+		$mail->addAddress($recipient);
+		// You can also add CC, BCC, and additional To recipients here.
+
+		// Specify the content of the message.
+		$mail->isHTML(true);
+		$mail->Subject    = $subject;
+		$mail->Body       = $bodyHtml;
+		$mail->AltBody    = $bodyText;
+		$mail->Send();
+		echo "Email sent!" , PHP_EOL;
+	  } catch (phpmailerException $e) {
+		echo "An error occurred. {$e->errorMessage()}", PHP_EOL; //Catch errors from PHPMailer.
+	  } catch (Exception $e) {
+		echo "Email not sent. {$mail->ErrorInfo}", PHP_EOL; //Catch errors from Amazon SES.
+	  }
+
       header("Location: confirmation.html");
   }
 
