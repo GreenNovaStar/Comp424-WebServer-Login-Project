@@ -36,7 +36,7 @@ sudo /sbin/iptables-save
 #----------Configuring Snort----------#
 # Change ipvar HOME_NET in snort.conf to system IP address (172.31.16.222/20)
 # sudo gedit /etc/snort/snort.conf
-sed -i -e 's/ipvar HOME_NET/ipvar HOME_NET 172.31.16.222/20 /g' /etc/snort/snort.conf
+sed -i -e 's/ipvar HOME_NET.*/ipvar HOME_NET 172.31.16.222\/20/g' /etc/snort/snort.conf
 # get latest rules for snort to have up-to-date attack definitions and protection actions
 sudo wget https://www.snort.org/rules/snortrules-snapshot-3130.tar.gz?oinkcode=a5b122e19f9a34460f63a5437fbac7cacbfe601d
 # unzip updated snort rules folder to /etc/snort/rules
@@ -75,3 +75,8 @@ sudo systemctl restart apache2
 sudo certbot --apache -d 424dasquad.com
 # set Alias for subdomains to work with certificate
 sudo certbot --apache -d 424dasquad.com -d www.424dasquad.com
+
+
+#-----------Configuring Mailing System----------#
+# Configuring Composer
+composer require phpmailer/phpmailer

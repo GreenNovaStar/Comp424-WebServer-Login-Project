@@ -60,10 +60,18 @@ sudo apt-get install iptables
 echo -e "\n\nInstalling PHP Mailer..\n"
 sudo apt-get install libphp-phpmailer
 
+# Install Composer to work with phpmailer
+echo -e "\n\nInstalling Composer..\n"
+sudo apt-get install composer
+composer require phpmailer/phpmailer
+
 # Install apache certbot for managing SSL certificate for website
 # add certbot to repository
+echo -e "\n\nInstalling Apache Cerbot..\n"
 sudo add-apt-repository ppa:certbot/certbot
 sudo apt-get install python3-certbot-apache
+
+
 
 
 
