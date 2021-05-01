@@ -108,7 +108,7 @@
 
 	  $bodyHtml = '<h1>Email Verification</h1>
 		<p>This email was sent from Da Squad website! Click -->
-		<a href="http://ec2-54-151-88-187.us-west-1.compute.amazonaws.com/success.html">Da Squad</a> to verify your email and complete the registration process!</p>';
+		<a href="https://www.424dasquad.com/success.html">Da Squad</a> to verify your email and complete the registration process!</p>';
 
 	  $mail = new PHPMailer(true);
 
