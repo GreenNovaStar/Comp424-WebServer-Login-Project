@@ -73,12 +73,12 @@
         email varchar(255) Primary Key,
         password varchar(50),
         dob date,
-      	sec1 tinyint NOT NULL DEFAULT 0,
-      	ans1 varchar(255),
-      	sec2 tinyint NOT NULL DEFAULT 0,
-      	ans2 varchar(255),
-      	sec3 tinyint NOT NULL DEFAULT 0,
-      	ans3 varchar(255),
+	sec1 tinyint NOT NULL DEFAULT 0,
+	ans1 varchar(255),
+	sec2 tinyint NOT NULL DEFAULT 0,
+	ans2 varchar(255),
+	sec3 tinyint NOT NULL DEFAULT 0,
+	ans3 varchar(255),
         login timestamp,
         numlogin int NOT NULL DEFAULT 0
       )";
@@ -89,7 +89,7 @@
 	  $sender = 'dasquad424@gmail.com';
 	  $senderName = 'Da Squad';
 
-	  $recipient = $email;
+	  $recipient = 'dasquad424@gmail.com';
 
 	  // Amazon SES SMTP user name.
 	  $usernameSmtp = 'AKIAZVTSETEUXWMLOWLL';
@@ -108,7 +108,7 @@
 
 	  $bodyHtml = '<h1>Email Verification</h1>
 		<p>This email was sent from Da Squad website! Click -->
-		<a href="http://ec2-54-151-88-187.us-west-1.compute.amazonaws.com/success.html">Da Squad</a> to verify your email and complete the registration process!</p>';
+		<a href="https://www.424dasquad.com/success.html">Da Squad</a> to verify your email and complete the registration process!</p>';
 
 	  $mail = new PHPMailer(true);
 
@@ -137,8 +137,10 @@
 		echo "Email sent!" , PHP_EOL;
 	  } catch (phpmailerException $e) {
 		echo "An error occurred. {$e->errorMessage()}", PHP_EOL; //Catch errors from PHPMailer.
+    header("Location: error.html");
 	  } catch (Exception $e) {
 		echo "Email not sent. {$mail->ErrorInfo}", PHP_EOL; //Catch errors from Amazon SES.
+    header("Location: error.html");
 	  }
 
       header("Location: confirmation.html");

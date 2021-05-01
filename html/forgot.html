@@ -144,7 +144,7 @@ hr {
     <meta charset="utf-8">
     <title>Forgot Username and Password</title>
     <script src="https://hcaptcha.com/1/api.js" async defer></script>
-    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- <h1>Forgot Password</h1> -->
   </head>
   <body>
@@ -178,34 +178,25 @@ hr {
       <div class = "forgotusrnameform">
         <form action="forgotUsername.php" method="post">
           <h1>Forgot Username</h1>
-          <h5>Please answer your security questions and enter your email to retrieve your username.</h5>
+          <h5>Please enter your email to proceed retrieve your username.</h5>
           <hr>
 
           <label for="email"><b>Email</b></label>
           <input type="email" placeholder="Enter Email" name="email" required>
 
-          <label for="question1"><b>Security Question #1</b></label>
-          <input type="text" placeholder="Enter Security Question #1 Answer" name="question1" required>
-
-          <label for="question2"><b>Security Question #2</b></label>
-          <input type="text" placeholder="Enter Security Question #2 Answer" name="question2" required>
-
-          <label for="question3"><b>Security Question #3</b></label>
-          <input type="text" placeholder="Enter Security Question #3 Answer" name="question3" required>
           <div class="h-captcha" data-sitekey="ebc443a9-6d76-4817-93a6-a8c725a54020"></div>
-          <button type="submit" class="forgotPassBtn">Send Email</button>
+          <button type="submit" class="forgotPassBtn">Proceed to next step</button>
           <a style="text-decoration:none;" href="login.html">
             <button type="button" class="cancelbtn" >Cancel</button>
-          <!-- <br> -->
+          </a>
         </form>
         <hr>
-        </a>
       </div>
 
 
     </div>
   </body>
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
   <script type="text/javascript">
   $(".forgotusrname").click(() => {
     $(".forgotusrnameform").show();

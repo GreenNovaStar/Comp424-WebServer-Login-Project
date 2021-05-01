@@ -6,7 +6,7 @@
 		<style type="text/css">
 		body {font-family: Arial, Helvetica, sans-serif;}
 		* {box-sizing: border-box;}
-		
+
 		button {
 		background-color: #4e7500;
 		color: white;
@@ -17,11 +17,16 @@
 		width: 25%;
 		opacity: 0.9;
 		}
-
+    .container {
+      padding: 16px;
+    }
 		button:hover {
 		opacity:1;
 		}
-		
+    hr {
+      border: 1px solid #f1f1f1;
+      margin-bottom: 25px;
+    }
 		/* The Modal (background) */
 		.modal {
 		display: none; /* Hidden by default */
@@ -38,13 +43,16 @@
 
 		</style>
 	</head>
-	<header>
-		Congratulations!
-	</header>
 	<main>
-		<body>		
-			<p>You Have Been Successfully Registered.</p>
-			<p><button onclick="location.href='../login.html'">CLICK HERE TO LOGIN</button>
+
+    <body>
+      <div class="container">
+        <h1>Congratulations!</h1>
+        <h3>You Have Been Successfully Registered.</h3>
+        <hr>
+        <button onclick="location.href='login.html'">CLICK HERE TO LOGIN</button>
+
+      </div>
 		</body>
 	</main>
 </html>

@@ -22,13 +22,13 @@
   $userFlag=mysqli_num_rows($user);
   // $checkusr = mysqli_query($connection, "SELECT COUNT(*) FROM comp_users WHERE uname = '$uname'");
   // $checkusr = mysqli_fetch_row($user);
-  // echo $userFlag;
+  echo $userFlag;
   if($userFlag >= 1){
     $update =mysqli_query($connection,    "UPDATE comp_users   SET password=MD5('$psw1') WHERE uname='$uname'");
     header("Location: login.html");
   }else{
-    // header("Location: error.html");
-    echo $psw1;
+    header("Location: error.html");
+    // echo $psw1;
   }
 
   mysqli_close($connection);

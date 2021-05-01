@@ -21,7 +21,7 @@
       echo "Username already exists";
       header("resetUsername.html");
     } else {
-      
+      header("Location: error.html");
     }
 
   }
