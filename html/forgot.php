@@ -144,7 +144,7 @@ hr {
     <meta charset="utf-8">
     <title>Forgot Username and Password</title>
     <script src="https://hcaptcha.com/1/api.js" async defer></script>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
     <!-- <h1>Forgot Password</h1> -->
   </head>
   <body>
@@ -175,28 +175,53 @@ hr {
         <!-- <br> -->
       </div>
 
-      <div class = "forgotusrnameform">
-        <form action="forgotUsername.php" method="post">
-          <h1>Forgot Username</h1>
-          <h5>Please enter your email to proceed retrieve your username.</h5>
-          <hr>
+      <?php
 
-          <label for="email"><b>Email</b></label>
-          <input type="email" placeholder="Enter Email" name="email" required>
+        session_start();
 
-          <div class="h-captcha" data-sitekey="ebc443a9-6d76-4817-93a6-a8c725a54020"></div>
-          <button type="submit" class="forgotPassBtn">Proceed to next step</button>
-          <a style="text-decoration:none;" href="login.html">
-            <button type="button" class="cancelbtn" >Cancel</button>
-          </a>
-        </form>
-        <hr>
-      </div>
+        $host="localhost";
+        $user="ubuntu";
+        $password="CompClass!424";
+        $db="comp_class";
+
+        $connection= mysqli_connect($host, $user, $password, $db);
+
+        if($connection -> false){
+          die("ERROR: Could not connect. " . mysqli_connect_error());
+        }
+
+        echo '<div class = "forgotusrnameform">';
+        echo '<form action="forgotUsername.php" method="post">';
+        echo '<h1>Forgot Username</h1>';
+        echo '<h5>Please answer your security questions and enter your email to retrieve your username.</h5>';
+        echo '<hr>';
+
+        echo '<label for="email"><b>Email</b></label>';
+        echo'<input type="email" placeholder="Enter Email" name="email" required>';
+
+        echo '<label for="question1"><b>Security Question #1</b></label>';
+        echo '<input type="text" placeholder="Enter Security Question #1 Answer" name="question1" required>';
+
+        echo '<label for="question2"><b>Security Question #2</b></label>';
+        echo '<input type="text" placeholder="Enter Security Question #2 Answer" name="question2" required>';
+
+        echo '<label for="question3"><b>Security Question #3</b></label>';
+        echo '<input type="text" placeholder="Enter Security Question #3 Answer" name="question3" required>';
+        echo '<div class="h-captcha" data-sitekey="ebc443a9-6d76-4817-93a6-a8c725a54020"></div>';
+        echo '<button type="submit" class="forgotPassBtn">Send Email</button>';
+        echo '<a style="text-decoration:none;" href="login.html">';
+        echo '<button type="button" class="cancelbtn" >Cancel</button>';
+
+        echo '</form>';
+        echo '<hr>';
+        echo '</a>';
+        echo '</div>';
+       ?>
 
 
     </div>
   </body>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
   <script type="text/javascript">
   $(".forgotusrname").click(() => {
     $(".forgotusrnameform").show();

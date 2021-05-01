@@ -1,0 +1,92 @@
+<!DOCTYPE html> <html lang="en" dir="ltr"> <style> body {font-family: Arial, Helvetica, sans-serif;} * {box-sizing: border-box;} /* Full-width input fields */ input[type=text], input[type=password], input[type=date], input[type=email] { width: 100%; padding: 15px;
+  margin: 5px 0 22px 0; display: inline-block; border: none; background: #f1f1f1;
+}
+/* Add a background color when the inputs get focus */ input[type=text]:focus, input[type=password]:focus { background-color: #ddd; outline: none;
+}
+/* Set a style for all buttons */ button { background-color: #4E7500; color: white; padding: 14px 20px; margin: 8px 0; border: none; cursor: pointer; width: 100%; opacity: 0.9;
+}
+button:hover { opacity:1;
+}
+/* Extra styles for the cancel button */ .cancelbtn { padding: 14px 20px; background-color: #f44336;
+}
+/* Float cancel and signup buttons and add an equal width */ .cancelbtn, .signupbtn { width: auto; padding: 10px 18px; color: white;
+}
+/* Add padding to container elements */ .container { padding: 16px;
+}
+/* The Modal (background) */ .modal { display: none; /* Hidden by default */ position: fixed; /* Stay in place */ z-index: 1; /* Sit on top */ left: 0; top: 0; width: 100%; /* Full width */ height: 100%; /* Full height */ overflow: auto; /* Enable scroll if needed
+  */ background-color: #474e5d; padding-top: 50px;
+}
+/* Modal Content/Box */ .modal-content { background-color: #fefefe; margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */ border: 1px solid #888; width: 80%; /* Could be more or less, depending on screen size */
+}
+/* Style the horizontal ruler */ hr { border: 1px solid #f1f1f1; margin-bottom: 25px;
+}
+/* The Close Button (x) */ .close { position: absolute; right: 35px; top: 15px; font-size: 40px; font-weight: bold; color: #f1f1f1;
+}
+.close:hover, .close:focus { color: #f44336; cursor: pointer;
+}
+/* Clear floats */ .clearfix::after { content: ""; clear: both; display: table;
+}
+.form input[type=submit]:hover,.form input[type=submit]:active,.form input[type=submit]:focus { background: #017daf;
+}
+.form .message { margin: 15px 0 0; color: #b3b3b3; font-size: 12px;
+}
+.form .message a { color: #017daf; text-decoration: none;
+}
+/* Change styles for cancel button and signup button on extra small screens */ @media screen and (max-width: 300px) { .cancelbtn, .signupbtn { width: 100%;
+  }
+}
+</style> <head> <meta charset="utf-8"> <title>Reset Password Page</title> <!-- this is the captcha script --> <script src="https://hcaptcha.com/1/api.js" async defer></script> <!-- <script type="text/javascript"
+    src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script> --> <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <link
+    rel="stylesheet" href="../css/bootstrap.min.css"> <script type="text/javascript"> $(document).ready(function() {
+  $("#password2").keyup(validate);
+  });
+  function validate() { var password1 = $("#password1").val(); var password2 = $("#password2").val(); if(password1 == password2 && password1!=null && password2!=null) { $("#passwordMessage").html("<font color=\"green\"><b>Passwords Match</b></font>");
+  // $("input[type=submit]").prop("disabled", false);
+  document.getElementById("registerbtn").disabled = false;
+  // $('#Button').removeAttr('disabled');
+  }
+  else { $("#passwordMessage").html("<font color=\"red\"><b>Check Passwords</b></font>");
+  // $("input[type=submit]").prop("disabled", true);
+  document.getElementById("registerbtn").disabled = true;
+  // $('#Button').attr('disabled','disabled');
+  }}
+  $(document).ready(function() { $("#emailInput").keyup(validateEmail);
+  });
+  function validateEmail() { var email = $("#emailInput").val(); var mailformat = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if(email.match(mailformat)) { $("#emailMessage").html("<font color=\"green\"><b>Email Format Valid</b></font>"); $("input[type=submit]").prop("disabled", false);
+  // document.getElementById("button").disabled = true; $('#Button').removeAttr('disabled');
+  }
+  else { $("#emailMessage").html("<font color=\"red\"><b>Invalid Email Input</b></font>"); $("input[type=submit]").prop("disabled", true);
+  // document.getElementById("button").disabled = true; $('#Button').attr('disabled','disabled');
+  }}
+    </script> </head> <body> <form action="reset.php" method="post" name="form"> <div class="container"> <h1>Reset Password</h1> <hr> <label for="uname"><b>Enter your username to verify your identity.</b></label> <input type="text" placeholder="Enter Username"
+        name="uname" maxlength="50" required> <p>Please enter a new password.</p> <label for="psw"><b>Password</b></label> <input type="password" id ="password1" placeholder="Enter Password" name="psw" maxlength="50" required> <label for="psw-repeat"><b>Repeat
+        Password</b></label> <input type="password" id ="password2" placeholder="Repeat Password" name="psw-repeat" maxlength="50" required> <div class="h-captcha" data-sitekey="ebc443a9-6d76-4817-93a6-a8c725a54020"></div> <!-- <label>
+          <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me </label> --> <p><span id="passwordMessage"></span></p> <div class="clearfix"> <a style="text-decoration:none;" href="login.html"> <button type="button"
+            class="cancelbtn" >Cancel</button>
+          </a> <button type="submit" class="signupbtn" id="registerbtn">Reset Password</button> </div> <!-- <div class="clearfix"> <a style="text-decoration:none;" href="login.html"> <button type="button" class="cancelbtn">Cancel</button> </a> <a
+          style="text-decoration:none;" href="login.html">
+            <button type="submit" class="signupbtn" value="Sign Up" id="submit" disabled="disabled"><a href="login.html">Sign in here</a></button> </a> </div> --> </div> </form> </body> <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> <script src="../js/PassRequirements.js"></script>
+  <script type="text/javascript" src="../js/pwstrength.js"></script> <script type="text/javascript">
+        jQuery(document).ready(function () { "use strict"; var options = { minChar: 8, bootstrap3: true, onLoad: function () {
+                    //$('#messages').text('Start typing password');
+                },
+                onKeyUp: function (evt) { $(evt.target).pwstrength("outputErrorList");
+                }
+            };
+            $('#password1').pwstrength(options);
+        });
+    </script> <script> $('#password1').PassRequirements({ popoverPlacement: 'right', rules: { minlength: { text: "be at least minLength characters long", minLength: 8,
+        },
+        containSpecialChars: { text: "Your input should contain at least minLength special character", minLength: 1, regex: new RegExp('([^!,%,&,@,#,$,^,*,?,_,~])', 'g')
+        },
+        containLowercase: { text: "Your input should contain at least minLength lower case character", minLength: 1, regex: new RegExp('[^a-z]', 'g')
+        },
+        containUppercase: { text: "Your input should contain at least minLength upper case character", minLength: 1, regex: new RegExp('[^A-Z]', 'g')
+        },
+        containNumbers: { text: "Your input should contain at least minLength number", minLength: 1, regex: new RegExp('[^0-9]', 'g')
+        }
+      }
+    });
+  </script> </html>
