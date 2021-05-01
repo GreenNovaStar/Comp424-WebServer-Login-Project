@@ -47,7 +47,7 @@ echo "email from db is $emailHashFlag <br>";
     $port = 587;
     $subject = 'Forgot Password Reset';
     $bodyText =  "Forgot Password Reset\r\nThis email was sent from Da Squad website! Click --> Da Squad to reset your password!";
-    $bodyHtml = '<h1>Forgot Password Reset</h1><p>This email was sent from Da Squad website! Click --><a href="http://ec2-54-151-88-187.us-west-1.compute.amazonaws.com/reset.html">Da Squad</a> to reset your password!</p>';
+    $bodyHtml = '<h1>Forgot Password Reset</h1><p>This email was sent from Da Squad website! Click --><a href="https://www.424dasquad.com/reset.html">Da Squad</a> to reset your password!</p>';
     $mail = new PHPMailer(true);
 
     try {
